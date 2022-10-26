@@ -1,0 +1,12 @@
+"Transactions  for account ...000 as of 09/27/2022 02:03:53 AM ET"
+"Date","Action","Symbol","Description","Quantity","Price","Fees & Comm","Amount"
+"12/29/2021","NRA Withholding","BNDX","VANGUARD TOTAL INTERNATIONAL BND ETF","","","","-$0.14"
+"12/29/2021","Short Term Cap Gain","BNDX","VANGUARD TOTAL INTERNATIONAL BND ETF","","","","$0.48"
+"12/29/2021","Long Term Cap Gain","BNDX","VANGUARD TOTAL INTERNATIONAL BND ETF","","","","$29.21"
+"03/04/2021","NRA Tax Adj","BNDX","VANGUARD TOTAL INTERNATIONAL BND ETF","","","","-$1.10"
+"03/04/2021","Cash Dividend","BNDX","VANGUARD TOTAL INTERNATIONAL BND ETF","","","","$3.65"
+"02/25/2021","NRA Tax Adj","","SCHWAB1 INT 01/28-02/24","","","","-$0.02"
+"02/25/2021","Credit Interest","","SCHWAB1 INT 01/28-02/24","","","","$0.09"
+"02/09/2021","Buy","BNDX","VANGUARD TOTAL INTERNATIONAL BND ETF","81","$57.9999","","-$4697.99"
+"02/02/2021","Wire Received","","WIRED FUNDS RECEIVED","","","","$5000.00"
+"Transactions Total","","","","","","","$94.33",
