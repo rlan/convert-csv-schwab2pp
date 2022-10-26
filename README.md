@@ -38,6 +38,20 @@ python3 convert.py example.csv -p example_out.csv
 
 Here is a complete step-by-step [guide](./guide/README.md) for creating a new portfolio file in PP and importing the converted example CSV. As far as I can test, PP will detect and skip duplicate transactions. So it is safe to import overlapping transactions in the future.
 
+Supported transactions:
+
+* "NRA Tax Adj"
+* "Credit Interest"
+* "NRA Withholding"
+* "Short Term Cap Gain"
+* "Long Term Cap Gain"
+* "Cash Dividend"
+* "Buy"
+* "Wire Received"
+* "Sell" (Not verified)
+
+I have actual transactions for only above types of transactions. "Sell" is a guess; I don't have an actual sale.
+
 License:
 
 Eclipse Public License - v 2.0
