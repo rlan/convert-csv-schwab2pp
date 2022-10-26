@@ -63,8 +63,8 @@ python3 convert.py example.csv -p example_out.csv
 
     ![Choose Finnhub from the Provider drop list](img/093.jpg)
 
-    1. Repeat this for other securities in the account. Note that this only needs to be done once for each new securities in the account. For example, repeat this when a new security is purchased. PP will retrieve historical prices automatically or you can manually do so via Online menu, Update Quotes.
+    5. Repeat this for other securities in the account. Note that this only needs to be done once for each new securities in the account. For example, repeat this when a new security is purchased. PP will retrieve historical prices automatically or you can manually do so via Online menu, Update Quotes.
 
-12. Verify. Go to "All transcations" from the tree menu on the left panel.
+12. Verify. Select "All transcations" from the tree menu on the left panel. Import complete.
 
 ![Select All transactions](img/100.jpg)
