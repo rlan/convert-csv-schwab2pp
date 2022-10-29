@@ -54,6 +54,10 @@ def remove_currency(text : str):
 new_value = df['Value'].apply(remove_currency)
 df['Value'] = new_value
 
+# Add a new column with all USD: Transaction Currency
+transaction_currency = [ "USD" for x in df['Value']]
+df['Transaction Currency'] = transaction_currency
+
 # Convert Action to Type
 action_to_type = {
     'NRA Tax Adj': 'Taxes',
