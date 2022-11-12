@@ -25,6 +25,12 @@ Runtime Requirements:
 * Python 3
 * Pandas
 
+Install runtime libraries:
+
+```sh
+pip install -r requirements.txt
+```
+
 Example:
 
 There is an example Schwab CSV included: [example.csv](example.csv).
@@ -36,7 +42,7 @@ To replicate this conversion:
 python3 convert.py example.csv -p example_out.csv
 ```
 
-Here is a complete step-by-step [guide](./guide/README.md) for creating a new portfolio file in PP and importing the converted example CSV. As far as I can test, PP will detect and skip duplicate transactions. So it is safe to import overlapping transactions in the future.
+Here is a complete [step-by-step guide](./guide/README.md) for creating a new portfolio file in PP and importing the converted example CSV. As far as I can test, PP will detect and skip duplicate transactions. So it is safe to import overlapping transactions in the future.
 
 Supported transactions:
 
