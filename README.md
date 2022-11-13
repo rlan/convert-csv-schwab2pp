@@ -56,7 +56,7 @@ Supported transactions:
 * "Wire Received"
 * "Sell" (Not verified)
 
-I have actual transactions for only above types of transactions. "Sell" is a guess; I don't have an actual sale.
+I have actual transactions for only above types of transactions. "Sell" is an educated guess; I don't have an actual sell record.
 
 License:
 
