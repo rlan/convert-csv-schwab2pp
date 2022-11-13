@@ -2,10 +2,13 @@
 
 import argparse
 import os.path
-import pandas as pd
 import sys
 
-import argparse
+try:
+    import pandas as pd
+except ImportError:
+    raise ImportError('Is Pandas installed?')
+
 
 parser = argparse.ArgumentParser(description='Converts a Charles Schwab transaction CSV file to a ready-to-import CSV file for Portfolio Performance.')
 parser.add_argument('schwab_csv', type=str,
