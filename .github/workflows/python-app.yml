@@ -1,5 +1,8 @@
 # This workflow will install Python dependencies, run tests and lint with a single version of Python
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+#
+# Pandas officially supports 3.8, 3.9 and 3.10.
+# Ref: https://pandas.pydata.org/docs/getting_started/install.html#python-version-support
 
 name: Testing
 
@@ -18,7 +21,7 @@ jobs:
 
     strategy:
       matrix:
-        python-version: ["3.7", "3.8", "3.9", "3.10", "3.11"]
+        python-version: ["3.8", "3.9", "3.10"]
 
     steps:
     - uses: actions/checkout@v3
