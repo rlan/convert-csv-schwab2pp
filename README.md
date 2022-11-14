@@ -2,6 +2,8 @@
 
 Converts a [Charles Schwab](https://www.schwab.com/) transaction CSV file to a ready-to-import CSV file for [Portfolio Performance](https://www.portfolio-performance.info/en/) (PP).
 
+[ ![workflow badge](https://github.com/rlan/convert-csv-schwab2pp/actions/workflows/python-app.yml/badge.svg) ](https://github.com/rlan/convert-csv-schwab2pp/actions)
+
 Usage:
 
 ```sh
@@ -56,7 +58,7 @@ Supported transactions:
 * "Wire Received"
 * "Sell" (Not verified)
 
-I have actual transactions for only above types of transactions. "Sell" is an educated guess; I don't have an actual sell record.
+I have actual transactions for only above types of transactions. "Sell" is an educated guess; I don't have an actual sale.
 
 License:
 
