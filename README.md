@@ -24,7 +24,7 @@ optional arguments:
 
 Runtime Requirements:
 
-* Python 3
+* Python 3[^1]
 * Pandas
 
 Install runtime libraries:
@@ -35,7 +35,7 @@ pip install -r requirements.txt
 
 Example:
 
-There is an example Schwab CSV included: [example.csv](example.csv).
+An example Schwab CSV: [example.csv](example.csv).
 The converted ready-to-import CSV file: [example_out.csv](example_out.csv).
 
 To replicate this conversion:
@@ -44,7 +44,7 @@ To replicate this conversion:
 python3 convert.py example.csv -p example_out.csv
 ```
 
-Here is a complete [step-by-step guide](./guide/README.md) for creating a new portfolio file in PP and importing the converted example CSV. As far as I can test, PP will detect and skip duplicate transactions. So it is safe to import overlapping transactions in the future.
+Here is a complete [step-by-step guide](./guide/README.md) for creating a new portfolio file in PP and importing the converted example CSV.
 
 Supported transactions:
 
@@ -60,6 +60,13 @@ Supported transactions:
 
 I have actual transactions for only above types of transactions. "Sell" is an educated guess; I don't have an actual sale.
 
+Duplicate transactions:
+
+As far as I can test, PP will detect and skip duplicate transactions. So it is safe to import overlapping transactions in the future.
+
 License:
 
 Eclipse Public License - v 2.0
+
+
+[^1]: Python 3.8, 3.9 and 3.10 are supported. Only these versions are officially supported by Pandas, as of 2022-11-15.
