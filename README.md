@@ -60,7 +60,11 @@ To replicate this conversion:
 python convert.py example.csv -p example_out.csv
 ```
 
+## After conversion
+
 Here is a complete [step-by-step guide](./guide/README.md) for creating a new portfolio file in PP and importing the converted example CSV.
+
+## Details
 
 Supported transactions:
 
@@ -80,7 +84,7 @@ Duplicate transactions:
 
 As far as I can test, PP will detect and skip duplicate transactions. So it is safe to import overlapping transactions in the future.
 
-License:
+## License
 
 Eclipse Public License - v 2.0
 
