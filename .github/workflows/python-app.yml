@@ -46,7 +46,7 @@ jobs:
         diff example_out.csv test.csv
 
   docker:
-    runs-on: python:3.10.8-slim-buster
+    runs-on: ubuntu-latest
     steps:
       -
         name: Checkout
