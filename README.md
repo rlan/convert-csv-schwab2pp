@@ -12,7 +12,7 @@ There are two ways to run this tool: [Google Colab](https://colab.research.googl
 
 Although Google Colab is free, one will need a [Google account](https://www.google.com/account/about/).
 
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rlan/convert-csv-schwab2pp/convert-csv-schwab2pp.ipynb)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/rlan/convert-csv-schwab2pp/blob/main/convert-csv-schwab2pp.ipynb)
 
 ### Usage via command-line
 
