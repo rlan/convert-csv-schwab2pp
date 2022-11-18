@@ -6,12 +6,13 @@ Converts a [Charles Schwab](https://www.schwab.com/) transaction CSV file to a r
 
 ## Usage
 
-There are two ways to run this tool: Google Colab or via command-line. The former is for end-users. The later is for python-savvy users and developers.
+There are two ways to run this tool: [Google Colab](https://colab.research.google.com/) or via command-line. The former is for end-users. The later is for python-savvy users and developers.
 
 ### Usage via Google Colab
 
-Although [Google Colab](https://colab.research.google.com/) is free, one will need a [Google account](https://www.google.com/account/about/).
-More instructions are in this [link](https://colab.research.google.com/drive/1uyuqQmZA8tg8XlHsVV2IKsVq4B-SiSMo?usp=sharing).
+Although Google Colab is free, one will need a [Google account](https://www.google.com/account/about/).
+
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rlan/convert-csv-schwab2pp/convert-csv-schwab2pp.ipynb)
 
 ### Usage via command-line
 
@@ -35,6 +36,9 @@ Command-line options:
 
 ```sh
 python convert.py --help
+```
+
+```
 usage: convert.py [-h] [-p PP_CSV] schwab_csv
 
 Converts a Charles Schwab transaction CSV file to a ready-to-import CSV file for Portfolio
