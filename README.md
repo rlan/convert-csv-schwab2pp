@@ -1,8 +1,10 @@
 # A Charles Schwab CSV Converter for Portfolio Performance
 
-Converts a [Charles Schwab](https://www.schwab.com/) transaction CSV file to a ready-to-import CSV file for [Portfolio Performance](https://www.portfolio-performance.info/en/) (PP).
+[![Python CI](https://github.com/rlan/convert-csv-schwab2pp/actions/workflows/python-app.yml/badge.svg)](https://github.com/rlan/convert-csv-schwab2pp/actions)
+![Last commit date](https://img.shields.io/github/last-commit/rlan/convert-csv-schwab2pp)
+![Eclipse Public License - v 2.0](https://img.shields.io/github/license/rlan/convert-csv-schwab2pp)
 
-[![workflow badge](https://github.com/rlan/convert-csv-schwab2pp/actions/workflows/python-app.yml/badge.svg)](https://github.com/rlan/convert-csv-schwab2pp/actions)
+Converts a [Charles Schwab](https://www.schwab.com/) transaction CSV file to a ready-to-import CSV file for [Portfolio Performance](https://www.portfolio-performance.info/en/) (PP).
 
 ## Usage
 
@@ -82,7 +84,12 @@ Supported transactions:
 * "Wire Received"
 * "Sell" (Not verified)
 
-I have actual transactions for only above types of transactions. "Sell" is an educated guess; I don't have an actual sale.
+Not-yet-supported transactions:
+
+* ACH deposit and withdrawal
+* Wire withdrawal
+
+I have actual transactions for the supported transactions. "Sell" is an educated guess; I don't have an actual sale. If you could share actual transactions for not-yet-supported ones, please let me know. Thank you.
 
 Duplicate transactions:
 
