@@ -17,7 +17,7 @@ More instructions are in this [link](https://colab.research.google.com/drive/1uy
 
 Runtime Requirements:
 
-* Python 3.8, 3.9 or 3.10[^1]
+* Python 3.7, 3.8, 3.9 or 3.10[^1]
 * Pandas
 
 Install this tool in a Python virtual environment:
@@ -88,4 +88,4 @@ As far as I can test, PP will detect and skip duplicate transactions. So it is s
 
 Eclipse Public License - v 2.0
 
-[^1]: Python 3.8, 3.9 and 3.10 are supported. Only these versions are officially supported by Pandas, as of 2022-11-15.
+[^1]: Python 3.11 not yet officially supported by Pandas, as of 2022-11-15.
