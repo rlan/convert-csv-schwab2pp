@@ -6,6 +6,8 @@
 
 Converts a [Charles Schwab](https://www.schwab.com/) transaction CSV file to a ready-to-import CSV file for [Portfolio Performance](https://www.portfolio-performance.info/en/) (PP).
 
+After conversion, this [step-by-step guide](./guide/README.md) creates a new portfolio file in PP and imports the converted example CSV.
+
 ## Usage
 
 There are two ways to run this tool: [Google Colab](https://colab.research.google.com/) or via command-line. The former is for end-users. The later is for python-savvy users and developers.
@@ -65,10 +67,6 @@ To replicate this conversion:
 ```sh
 python convert.py example.csv -p example_out.csv
 ```
-
-## After conversion
-
-Here is a complete [step-by-step guide](./guide/README.md) for creating a new portfolio file in PP and importing the converted example CSV.
 
 ## Details
 
