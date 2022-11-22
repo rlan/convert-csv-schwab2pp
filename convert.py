@@ -105,5 +105,5 @@ new_security_name = [convert_security_name(v) for v in df['Security Name']]
 df['Security Name'] = new_security_name
 
 # Write to CSV file
-df.to_csv(args.pp_csv, index=False, date_format='%Y%m%d')
+df.to_csv(args.pp_csv, index=False, date_format='%Y-%m-%d')
 print(args.pp_csv)
