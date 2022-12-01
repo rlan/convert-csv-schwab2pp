@@ -95,6 +95,6 @@ As far as I can test, PP will detect and skip duplicate transactions. So it is s
 
 ## License
 
-Eclipse Public License - v 2.0
+MIT
 
 [^1]: Python 3.11 not yet officially supported by Pandas, as of 2022-11-15.
