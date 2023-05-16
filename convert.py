@@ -78,6 +78,12 @@ action_to_type = {
     'Buy': 'Buy',
     'Sell': 'Sell',
     'Wire Received': 'Deposit',
+    'Advisor Fee': 'Fees',
+    'Reinvest Dividend': 'Dividend',
+    'Reinvest Shares': 'Buy',
+    'Bank Interest': 'Dividend',
+    'Funds Received': 'Deposit',
+    'MoneyLink Transfer': 'Deposit',
 }
 new_type = [action_to_type[x] for x in df['Note']]
 df['Type'] = new_type
