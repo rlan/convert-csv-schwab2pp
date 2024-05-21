@@ -1,8 +1,7 @@
 # A Charles Schwab CSV Converter for Portfolio Performance
 
-[![Python CI](https://github.com/rlan/convert-csv-schwab2pp/actions/workflows/python-app.yml/badge.svg)](https://github.com/rlan/convert-csv-schwab2pp/actions)
-![Last commit date](https://img.shields.io/github/last-commit/rlan/convert-csv-schwab2pp)
-![Eclipse Public License - v 2.0](https://img.shields.io/github/license/rlan/convert-csv-schwab2pp)
+[![Testing badge](https://github.com/rlan/convert-csv-schwab2pp/actions/workflows/python-app.yml/badge.svg)](https://github.com/rlan/convert-csv-schwab2pp/actions)
+![MIT license](https://img.shields.io/github/license/rlan/convert-csv-schwab2pp)
 
 Converts a [Charles Schwab](https://www.schwab.com/) transaction CSV file to a ready-to-import CSV file for [Portfolio Performance](https://www.portfolio-performance.info/en/) (PP).
 
@@ -22,7 +21,7 @@ Although Google Colab is free, one will need a [Google account](https://www.goog
 
 Runtime Requirements:
 
-* Python 3.7, 3.8, 3.9 or 3.10[^1]
+* Python 3.7, 3.8, 3.9, 3.10, 3.11, 3.12.
 * Pandas
 
 Install this tool in a Python virtual environment:
@@ -42,7 +41,7 @@ Command-line options:
 python convert.py --help
 ```
 
-```
+```txt
 usage: convert.py [-h] [-p PP_CSV] schwab_csv
 
 Converts a Charles Schwab transaction CSV file to a ready-to-import CSV file for Portfolio
@@ -96,5 +95,3 @@ As far as I can test, PP will detect and skip duplicate transactions. So it is s
 ## License
 
 MIT
-
-[^1]: Python 3.11 not yet officially supported by Pandas, as of 2022-11-15.
