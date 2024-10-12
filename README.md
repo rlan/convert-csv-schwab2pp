@@ -9,6 +9,13 @@ Converts a [Charles Schwab](https://www.schwab.com/) transaction CSV file to a r
 
 After conversion, this [step-by-step guide](./guide/README.md) creates a new portfolio file in PP and imports the converted example CSV.
 
+<figure>
+  <img
+  src="https://github.com/rlan/convert-csv-schwab2pp/raw/main/guide/img/100.jpg"
+  alt="Guide step 100">
+  <figcaption>After importing the converted example CSV</figcaption>
+</figure>
+
 ## Usage
 
 There are two ways to run this tool: [Google Colab](https://colab.research.google.com/) or via command-line. The former is for end-users. The later is for python-savvy users and developers.
@@ -81,12 +88,12 @@ Supported transactions:
 * "Cash Dividend"
 * "Buy"
 * "Wire Received"
+* "Wire Sent" (Thank you, @ipaulo)
 * "Sell" (Not verified)
 
 Not-yet-supported transactions:
 
 * ACH deposit and withdrawal
-* Wire withdrawal
 
 I have actual transactions for the supported transactions. "Sell" is an educated guess; I don't have an actual sale. If you could share actual transactions for not-yet-supported ones, please let me know. Thank you.
 
