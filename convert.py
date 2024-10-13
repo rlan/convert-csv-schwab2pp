@@ -33,8 +33,9 @@ if not os.path.isfile(args.schwab_csv):
 
 
 # A Charles Scwab CSV starts with a prefix and a suffix row
-# Prefix: "Transactions  for account...
+# Prefix: "Transactions  for account..."
 # Suffix: "Transactions Total"
+# They are ignored.
 df = pd.read_csv(args.schwab_csv, skiprows=1, skipfooter=1, engine="python")
 
 # Convert dates to datetime objects
@@ -70,6 +71,13 @@ transaction_currency = ["USD" for x in df["Value"]]
 df["Transaction Currency"] = transaction_currency
 
 # Convert Action to Type
+"""
+"Deposit/Removal (or withdrawal): Depositing or withdrawing funds will 
+respectively increase or decrease the value of a deposit account."
+Ref: https://help.portfolio-performance.info/en/reference/transaction/
+
+So a Schwab "Wire Sent" is a PP "Removal".
+"""
 action_to_type = {
     "NRA Tax Adj": "Taxes",
     "Credit Interest": "Interest",
@@ -80,6 +88,7 @@ action_to_type = {
     "Buy": "Buy",
     "Sell": "Sell",
     "Wire Received": "Deposit",
+    "Wire Sent": "Removal",
     "Advisor Fee": "Fees",
     "Reinvest Dividend": "Dividend",
     "Reinvest Shares": "Buy",
@@ -104,6 +113,8 @@ def convert_security_name(data: str):
     if data.startswith("SCHWAB1 INT"):
         return ""
     elif data.startswith("WIRED FUNDS RECEIVED"):
+        return ""
+    elif data.startswith("WIRED FUNDS DISBURSED"):
         return ""
     else:
         return data

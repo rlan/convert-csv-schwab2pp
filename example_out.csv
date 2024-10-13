@@ -1,4 +1,5 @@
 Date,Note,Ticker Symbol,Security Name,Shares,Fees,Value,Transaction Currency,Type
+2024-01-01,Wire Sent,,,,,-100.00,USD,Removal
 2021-12-29,NRA Withholding,BNDX,VANGUARD TOTAL INTERNATIONAL BND ETF,,,-0.14,USD,Taxes
 2021-12-29,Short Term Cap Gain,BNDX,VANGUARD TOTAL INTERNATIONAL BND ETF,,,0.48,USD,Dividend
 2021-12-29,Long Term Cap Gain,BNDX,VANGUARD TOTAL INTERNATIONAL BND ETF,,,29.21,USD,Dividend

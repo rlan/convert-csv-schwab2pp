@@ -11,7 +11,7 @@ After conversion, this [step-by-step guide](./guide/README.md) creates a new por
 
 <figure>
   <img
-  src="https://github.com/rlan/convert-csv-schwab2pp/raw/main/guide/img/100.jpg"
+  src="https://github.com/rlan/convert-csv-schwab2pp/raw/main/guide/img/100.png"
   alt="Guide step 100">
   <figcaption>After importing the converted example CSV</figcaption>
 </figure>
