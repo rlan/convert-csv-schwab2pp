@@ -1,7 +1,7 @@
 # A Charles Schwab CSV Converter for Portfolio Performance
 
 [![Testing badge](https://github.com/rlan/convert-csv-schwab2pp/actions/workflows/python-app.yml/badge.svg)](https://github.com/rlan/convert-csv-schwab2pp/actions)
-![Python versions](https://img.shields.io/badge/python-3.7%20%7C%203.8%20%7C%203.9%20%7C%203.10%20%7C%203.11%20%7C%203.12-blue)
+![Python versions](https://img.shields.io/badge/python-3.7%20%7C%203.8%20%7C%203.9%20%7C%203.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-blue)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 ![MIT license](https://img.shields.io/github/license/rlan/convert-csv-schwab2pp)
 
@@ -88,7 +88,7 @@ Supported transactions:
 * "Cash Dividend"
 * "Buy"
 * "Wire Received"
-* "Wire Sent" (Thank you, @ipaulo)
+* "Wire Sent"[^1] (Thank you, [@ipaulo](https://github.com/ipaulo))
 * "Sell" (Not verified)
 
 Not-yet-supported transactions:
@@ -104,3 +104,6 @@ As far as I can test, PP will detect and skip duplicate transactions. So it is s
 ## License
 
 MIT
+
+
+[^1]: https://github.com/rlan/convert-csv-schwab2pp/issues/2
