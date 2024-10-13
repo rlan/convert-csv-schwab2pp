@@ -30,7 +30,7 @@ Although Google Colab is free, one will need a [Google account](https://www.goog
 
 Runtime Requirements:
 
-* Python 3.7, 3.8, 3.9, 3.10, 3.11, 3.12.
+* Python 3.7, 3.8, 3.9, 3.10, 3.11, 3.12, 3.13.
 * Pandas
 
 Install this tool in a Python virtual environment:
