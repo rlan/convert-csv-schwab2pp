@@ -55,9 +55,9 @@ python3 convert.py example.csv -p example_out.csv
 
     ![Select Historical Quotes tab](img/092.png)
 
-    4. Choose "Yahoo" from the Provider dropdown list.
+    4. Choose "Yahoo Finance" from the Provider dropdown list. See official [documentation](https://help.portfolio-performance.info/en/how-to/downloading-historical-prices/) about other providers.
 
-    ![Choose Yahoo from the Provider dropdown list](img/093.png)
+    ![Choose Yahoo Finance from the Provider dropdown list](img/093.png)
 
     5. Historical quotes will be retrieved. Then click on "OK" button.
 
