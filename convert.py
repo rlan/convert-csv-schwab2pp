@@ -36,10 +36,14 @@ if not os.path.isfile(args.schwab_csv):
 # Prefix: "Transactions  for account..."
 # Suffix: "Transactions Total"
 # They are ignored.
-df = pd.read_csv(args.schwab_csv, skiprows=1, skipfooter=1, engine="python")
-
-# Convert dates to datetime objects
-df["Date"] = pd.to_datetime(df["Date"], format="%m/%d/%Y")
+dtype = {
+    "Date" : str,
+    "Symbol" : str,
+    "Fees & Comm" : str, # must keep as string, in case of floating-point rounding errors.
+    "Amount" : str, # must keep as string, in case of floating-point rounding errors.
+}
+df = pd.read_csv(args.schwab_csv, skiprows=1, skipfooter=1, dtype=dtype, engine="python")
+df["Symbol"] = df["Symbol"].fillna("")
 
 # Rename column names
 column_new_names = {
@@ -53,8 +57,8 @@ column_new_names = {
 df.rename(columns=column_new_names, inplace=True)
 
 
-# Remove US dollar sign from Value column
-def remove_currency(text: str):
+def remove_currency(text: str) -> str:
+    """Removes currency symbol from string. Works for negative values."""
     import re
     import locale
 
@@ -63,20 +67,25 @@ def remove_currency(text: str):
     return clean
 
 
+# Remove US dollar symbol
 new_value = df["Value"].apply(remove_currency)
 df["Value"] = new_value
 
-# Add a new column with all USD: Transaction Currency
-transaction_currency = ["USD" for x in df["Value"]]
-df["Transaction Currency"] = transaction_currency
+# Hard-coding. Assume all transcations are in USD.
+# Add a new column: Transaction Currency
+df["Transaction Currency"] = ["USD"] * len(df.index)
 
-# Convert Action to Type
+# Convert Action (Schwab) to Type (Portfolio Performance)
 """
 "Deposit/Removal (or withdrawal): Depositing or withdrawing funds will 
 respectively increase or decrease the value of a deposit account."
 Ref: https://help.portfolio-performance.info/en/reference/transaction/
 
 So a Schwab "Wire Sent" is a PP "Removal".
+
+Bank Interest as Dividend was introduced in commit 
+297f429979d4588f8871ad6d23d70f0557de9420 by @sdtom. After review, as Interest 
+is probably more appropriate.
 """
 action_to_type = {
     "NRA Tax Adj": "Taxes",
@@ -92,36 +101,42 @@ action_to_type = {
     "Advisor Fee": "Fees",
     "Reinvest Dividend": "Dividend",
     "Reinvest Shares": "Buy",
-    "Bank Interest": "Dividend",
+    "Bank Interest": "Interest",
     "Funds Received": "Deposit",
     "MoneyLink Transfer": "Deposit",
 }
 new_type = [action_to_type[x] for x in df["Note"]]
 df["Type"] = new_type
 
-# Delete Price column
+# Delete Price column because PP seems not to have this column for a 
+# transaction.
 df.drop(columns=["Price"], inplace=True)
 
-# Add SCHWAB1 INT to Notes
-for k, v in df["Security Name"].items():
-    if v.startswith("SCHWAB1 INT"):
-        df.at[k, "Note"] = df.at[k, "Note"] + " " + v
-
-
-# Remove non-security names
-def convert_security_name(data: str):
-    if data.startswith("SCHWAB1 INT"):
-        return ""
-    elif data.startswith("WIRED FUNDS RECEIVED"):
-        return ""
-    elif data.startswith("WIRED FUNDS DISBURSED"):
-        return ""
+# If "Ticker Symbol" column is not empty, then "Security Name" column
+# contains the name of the security. Otherwise it's a description.
+# If latter, append to "Note" column.
+new_security_name = []
+for k, v in df["Ticker Symbol"].items():
+    if len(v) == 0:
+        new_security_name.append("")
+        df.at[k, "Note"] = df.at[k, "Note"] + " " + df.at[k, "Security Name"]
     else:
-        return data
-
-
-new_security_name = [convert_security_name(v) for v in df["Security Name"]]
+        new_security_name.append(df.at[k, "Security Name"])
 df["Security Name"] = new_security_name
+
+
+# Convert dates to datetime objects
+new_date = []
+for k, v in df["Date"].items():
+    multiple = v.split(" as of ", 1)
+    new_date.append(multiple[0])
+    if len(multiple) > 1:
+        if len(df.at[k, "Note"]):
+            df.at[k, "Note"] = df.at[k, "Note"] + " as of " + multiple[1]
+        else:
+            df.at[k, "Note"] = "as of " + multiple[1]
+
+df["Date"] = pd.to_datetime(new_date, format="%m/%d/%Y")
 
 # Write to CSV file
 df.to_csv(args.pp_csv, index=False, date_format="%Y-%m-%d")

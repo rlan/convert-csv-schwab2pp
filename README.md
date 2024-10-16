@@ -101,6 +101,10 @@ Duplicate transactions:
 
 As far as I can test, PP will detect and skip duplicate transactions. So it is safe to import overlapping transactions in the future.
 
+Dates:
+
+If date is in "date1 as of date2" format, "date1" will be used and "as of date2" will be appended to the resulting "Note" column.
+
 ## License
 
 MIT
