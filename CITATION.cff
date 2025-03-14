@@ -1,0 +1,14 @@
+abstract: <p>Converts a Charles Schwab transaction CSV file to a ready-to-import CSV
+  file for Portfolio Performance.</p>
+authors:
+- family-names: Lan
+  given-names: Rick
+  orcid: 0000-0003-2830-2820
+cff-version: 1.2.0
+date-released: '2024-10-16'
+doi: 10.5281/zenodo.15024607
+license:
+- mit
+title: A Charles Schwab CSV Converter for Portfolio Performance
+type: software
+version: '20241016'
