@@ -105,6 +105,12 @@ Dates:
 
 If date is in "date1 as of date2" format, "date1" will be used and "as of date2" will be appended to the resulting "Note" column.
 
+## Citation
+
+If this project helps your research, don't hesitate to spread the word! Click on the badge below and find citation formats (e.g., BibTeX and etc) at the bottom of that page.
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15024607.svg)](https://doi.org/10.5281/zenodo.15024607)
+
 ## License
 
 MIT
