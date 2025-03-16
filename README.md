@@ -14,37 +14,24 @@ After conversion, this [step-by-step guide](./guide/README.md) creates a new por
   <img
   src="https://github.com/rlan/convert-csv-schwab2pp/raw/main/guide/img/100.png"
   alt="Guide step 100">
-  <figcaption>After importing the converted example CSV</figcaption>
+  <figcaption>After importing the converted example CSV.</figcaption>
 </figure>
 
 
-Prerequisite:
+## Installation
 
-* [pipx](https://github.com/pypa/pipx) (not pip).
+First, install [pipx](https://github.com/pypa/pipx) (not pip).
 
-
-Installation:
+Then:
 
 ```sh
 pipx install git+https://github.com/rlan/convert-csv-schwab2pp
 ```
 
 
-Update, if already installed:
+### Try it out!
 
-```sh
-pipx upgrade schwab2pp
-```
-
-
-Uninstall:
-
-```sh
-pipx uninstall schwab2pp
-```
-
-
-Usage:
+Let's see if installation was successful:
 
 ```sh
 schwab2pp --help
@@ -74,6 +61,20 @@ To replicate this conversion:
 
 ```sh
 schwab2pp example.csv -p example_out.csv
+```
+
+
+### Update to a new version
+
+```sh
+pipx upgrade schwab2pp
+```
+
+
+### Uninstallation
+
+```sh
+pipx uninstall schwab2pp
 ```
 
 
