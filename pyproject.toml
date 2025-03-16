@@ -1,0 +1,45 @@
+[project]
+name = "schwab2pp"
+description = "A command-line tool that converts a Charles Schwab transaction CSV file to a ready-to-import CSV file for Portfolio Performance."
+authors = [{ name = "Rick Lan", email = "rlan@users.noreply.github.com" }]
+license = { text = "MIT" }
+readme = "README.md"
+requires-python = ">=3.7.1"
+dependencies = [
+    "pandas >= 1.3.5",
+]
+dynamic = [ "version" ]
+
+[project.scripts]
+schwab2pp = "schwab2pp.cli:main"
+
+[project.urls]
+homepage = "https://github.com/rlan/convert-csv-schwab2pp"
+repository = "https://github.com/rlan/convert-csv-schwab2pp"
+documentation = "https://github.com/rlan/convert-csv-schwab2pp"
+"Bug Tracker" = "https://github.com/rlan/convert-csv-schwab2pp/issues"
+
+[tool.poetry]
+version = "1.0.0"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff.lint]
+# 1. Enable flake8-bugbear (`B`) rules, in addition to the defaults.
+select = ["E4", "E7", "E9", "F", "B"]
+
+# 2. Avoid enforcing line-length violations (`E501`)
+ignore = ["E501"]
+
+# 3. Avoid trying to fix flake8-bugbear (`B`) violations.
+unfixable = ["B"]
+
+# 4. Ignore `E402` (import violations) in all `__init__.py` files, and in select subdirectories.
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["E402"]
+"**/{tests,docs,tools}/*" = ["E402"]
+
+[tool.ruff.format]
+docstring-code-format = true

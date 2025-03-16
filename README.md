@@ -4,8 +4,9 @@
 ![Python versions](https://img.shields.io/badge/python-3.7%20%7C%203.8%20%7C%203.9%20%7C%203.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-blue)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 ![MIT license](https://img.shields.io/github/license/rlan/convert-csv-schwab2pp)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15024607.svg)](https://doi.org/10.5281/zenodo.15024607)
 
-Converts a [Charles Schwab](https://www.schwab.com/) transaction CSV file to a ready-to-import CSV file for [Portfolio Performance](https://www.portfolio-performance.info/en/) (PP).
+A command-line tool that converts a [Charles Schwab](https://www.schwab.com/) transaction CSV file to a ready-to-import CSV file for [Portfolio Performance](https://www.portfolio-performance.info/en/) (PP).
 
 After conversion, this [step-by-step guide](./guide/README.md) creates a new portfolio file in PP and imports the converted example CSV.
 
@@ -16,42 +17,41 @@ After conversion, this [step-by-step guide](./guide/README.md) creates a new por
   <figcaption>After importing the converted example CSV</figcaption>
 </figure>
 
-## Usage
 
-There are two ways to run this tool: [Google Colab](https://colab.research.google.com/) or via command-line. The former is for end-users. The later is for python-savvy users and developers.
+Prerequisite:
 
-### Usage via Google Colab
+* [pipx](https://github.com/pypa/pipx) (not pip).
 
-Although Google Colab is free, one will need a [Google account](https://www.google.com/account/about/).
 
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rlan/convert-csv-schwab2pp/blob/main/convert-csv-schwab2pp.ipynb)
-
-### Usage via command-line
-
-Runtime Requirements:
-
-* Python 3.7, 3.8, 3.9, 3.10, 3.11, 3.12, 3.13.
-* Pandas
-
-Install this tool in a Python virtual environment:
-
-1. [pyenv](https://github.com/pyenv/pyenv)
-2. [pyenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv)
-
-Install runtime libraries:
+Installation:
 
 ```sh
-pip install -r requirements.txt
+pipx install git+https://github.com/rlan/convert-csv-schwab2pp
 ```
 
-Command-line options:
+
+Update, if already installed:
 
 ```sh
-python convert.py --help
+pipx upgrade schwab2pp
+```
+
+
+Uninstall:
+
+```sh
+pipx uninstall schwab2pp
+```
+
+
+Usage:
+
+```sh
+schwab2pp --help
 ```
 
 ```txt
-usage: convert.py [-h] [-p PP_CSV] schwab_csv
+usage: schwab2pp [-h] [-p PP_CSV] schwab_csv
 
 Converts a Charles Schwab transaction CSV file to a ready-to-import CSV file for Portfolio
 Performance.
@@ -73,8 +73,9 @@ The converted ready-to-import CSV file: [example_out.csv](example_out.csv).
 To replicate this conversion:
 
 ```sh
-python convert.py example.csv -p example_out.csv
+schwab2pp example.csv -p example_out.csv
 ```
+
 
 ## Details
 
@@ -105,15 +106,17 @@ Dates:
 
 If date is in "date1 as of date2" format, "date1" will be used and "as of date2" will be appended to the resulting "Note" column.
 
+
 ## Citation
 
 If this project helps your research, don't hesitate to spread the word! Click on the badge below and find citation formats (e.g., BibTeX and etc) at the bottom of that page.
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15024607.svg)](https://doi.org/10.5281/zenodo.15024607)
 
+
 ## License
 
-MIT
+[MIT](LICENSE)
 
 
 [^1]: https://github.com/rlan/convert-csv-schwab2pp/issues/2
