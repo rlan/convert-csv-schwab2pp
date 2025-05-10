@@ -1,13 +1,10 @@
 # A step-by-step guide
 
-This guide will create a new portfolio file in Portfolio Performance (PP) and import a converted CSV file. Screen capturse are from PP 0.71.2 (October 2024).
+This guide will create a new portfolio file in Portfolio Performance (PP) and import a converted CSV file. For this guide, we will import the converted example in the [README](../README.md). Screen captures are from PP 0.71.2 (October 2024).
 
-1. Download a transcations CSV file from your Charles Schwab account, say, ```example.csv```.
-2. Convert the CSV. [README](../README.md) for convert.py.
+1. Download a transactions CSV file from your Charles Schwab account, say, `example.csv`.
 
-```sh
-python3 convert.py example.csv -p example_out.csv
-```
+2. Convert the CSV. See the [README](../README.md) for syntax.
 
 3. Open Portfolio Performance and click on "Create a new file".
 
@@ -23,9 +20,9 @@ python3 convert.py example.csv -p example_out.csv
 
 6. Click on "Finish" button.
 
-![Clikd on Finish](img/040.png)
+![Click on Finish](img/040.png)
 
-7. Import the converted CSV. Go to File menu, Import, CSV files (comma-seperated values) and select ```example_out.csv```.
+7. Import the converted CSV. Go to File menu, Import, CSV files (comma-separated values) and select `example_out.csv`.
 
 ![File menu, Import, CSV files](img/050.png)
 
@@ -33,7 +30,7 @@ python3 convert.py example.csv -p example_out.csv
 
 ![Click on "Next" button](img/060.png)
 
-9. Note that "Deposit" is chosen as the Cash Account and "Securities" as the Securities Account. These two names where entered in a previous step. Click on "Finish" button.
+9. Note that "Deposit" is chosen as the Cash Account and "Securities" as the Securities Account. These two names were entered in a previous step. Click on "Finish" button.
 
 ![Click on "Finish" button](img/070.png)
 
@@ -41,7 +38,7 @@ python3 convert.py example.csv -p example_out.csv
 
 ![Click on "OK" button](img/080.png)
 
-11. Now we are going to retrieve historial quotes for securities that exist in the account.
+11. Now we are going to retrieve historical quotes for securities that exist in the account.
 
     1. Select "All Securities" from the tree menu on the left panel.
 
@@ -64,8 +61,8 @@ python3 convert.py example.csv -p example_out.csv
     ![Historical quotes retrieved](img/094.png)
     ![Chart of historical quotes](img/095.png)
 
-    6. Repeat this for other securities in the account. Note that this only needs to be done once for each new securities in the account. For example, repeat this when a new security is purchased. PP will retrieve historical quotes automatically or you can manually do so via Online menu, Update Quotes.
+    6. Repeat this for other securities in the account. Note that this only needs to be done once for each new securities in the account. For example, repeat this when a new security is purchased. PP will retrieve historical quotes automatically, or you can manually do so via Online menu, Update Quotes.
 
-12. Verify. Select "All transcations" from the tree menu on the left panel. Import complete.
+12. Verify. Select "All transactions" from the tree menu on the left panel. Import complete.
 
 ![Select All transactions](img/100.png)

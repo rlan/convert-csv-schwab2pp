@@ -1,5 +1,6 @@
 "Transactions  for account ...000 as of 09/27/2022 02:03:53 AM ET"
 "Date","Action","Symbol","Description","Quantity","Price","Fees & Comm","Amount"
+"05/06/2025","Sell","BNDX","VANGUARD TOTAL INTERNATIONAL BND ETF","8","$247.37","$0.06","$1978.90"
 "01/01/2024","Wire Sent","","WIRED FUNDS DISBURSED","","","","-$100.00"
 "12/29/2021","NRA Withholding","BNDX","VANGUARD TOTAL INTERNATIONAL BND ETF","","","","-$0.14"
 "12/29/2021","Short Term Cap Gain","BNDX","VANGUARD TOTAL INTERNATIONAL BND ETF","","","","$0.48"

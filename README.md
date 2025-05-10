@@ -100,13 +100,13 @@ Supported transactions:
 - "Buy"
 - "Wire Received"
 - "Wire Sent"[^1] (Thank you, [@ipaulo](https://github.com/ipaulo))
-- "Sell" (Not verified)
+- "Sell"[^2] (Thank you, [@ipaulo](https://github.com/ipaulo) and [@mgillman](https://github.com/mgillman))
 
 Not-yet-supported transactions:
 
 - ACH deposit and withdrawal
 
-I have actual transactions for the supported transactions. "Sell" is an educated guess; I don't have an actual sale. If you could share actual transactions for not-yet-supported ones, please let me know. Thank you.
+I have actual transactions for the supported transactions. If you could share actual transactions for not-yet-supported ones, please let me know. Thank you.
 
 Duplicate transactions:
 
@@ -168,3 +168,4 @@ If this project helps your research, don't hesitate to spread the word! Click on
 
 
 [^1]: https://github.com/rlan/convert-csv-schwab2pp/issues/2
+[^2]: https://github.com/rlan/convert-csv-schwab2pp/issues/3
