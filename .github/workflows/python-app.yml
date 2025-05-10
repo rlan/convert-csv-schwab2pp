@@ -1,5 +1,6 @@
 # This workflow will install Python dependencies, run tests and lint with a single version of Python
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+# GitHub docs: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+# uv docs: https://docs.astral.sh/uv/guides/integration/github/
 
 name: Testing
 
@@ -14,31 +15,36 @@ permissions:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        python-version: ["3.7", "3.8", "3.9", "3.10", "3.11", "3.12", "3.13"]
+        # uv supports python 3.8 and higher
+        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12", "3.13"]
 
     steps:
     - uses: actions/checkout@v4
-    - name: Install Poetry
-      run: |
-        pipx install poetry
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v5
+
+    - name: Install uv
+      uses: astral-sh/setup-uv@v5
       with:
+        # Install a specific version of uv.
+        version: "0.7.3"
         python-version: ${{ matrix.python-version }}
-    - name: Install the code linting and formatting tool Ruff
-      run: |
-        pipx install ruff
+
     - name: Lint with Ruff
       run: |
-        ruff check --output-format=github .
-    - name: Installation
+        uvx ruff check --output-format=github .
+
+    - name: Set up Python ${{ matrix.python-version }}
       run: |
-        poetry install
+        uv python install
+
+    - name: Install the project
+      run: |
+        uv sync --all-extras
+
     - name: Test with example.csv
       run: |
-        poetry run schwab2pp example.csv -p test.csv
+        uv run schwab2pp example.csv -p test.csv
         diff example_out.csv test.csv

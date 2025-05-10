@@ -43,10 +43,10 @@ def convert(schwab_csv: str, pp_csv: str):
     # Suffix: "Transactions Total"
     # They are ignored.
     dtype = {
-        "Date" : str,
-        "Symbol" : str,
-        "Fees & Comm" : str, # must keep as string, in case of floating-point rounding errors.
-        "Amount" : str, # must keep as string, in case of floating-point rounding errors.
+        "Date": str,
+        "Symbol": str,
+        "Fees & Comm": str,  # must keep as string, in case of floating-point rounding errors.
+        "Amount": str,  # must keep as string, in case of floating-point rounding errors.
     }
     df = pd.read_csv(schwab_csv, skiprows=1, skipfooter=1, dtype=dtype, engine="python")
     df["Symbol"] = df["Symbol"].fillna("")
@@ -61,7 +61,6 @@ def convert(schwab_csv: str, pp_csv: str):
         "Amount": "Value",
     }
     df.rename(columns=column_new_names, inplace=True)
-
 
     # Remove US dollar symbol
     new_value = df["Value"].apply(remove_currency)
@@ -104,7 +103,7 @@ def convert(schwab_csv: str, pp_csv: str):
     new_type = [action_to_type[x] for x in df["Note"]]
     df["Type"] = new_type
 
-    # Delete Price column because PP seems not to have this column for a 
+    # Delete Price column because PP seems not to have this column for a
     # transaction.
     df.drop(columns=["Price"], inplace=True)
 
@@ -119,7 +118,6 @@ def convert(schwab_csv: str, pp_csv: str):
         else:
             new_security_name.append(df.at[k, "Security Name"])
     df["Security Name"] = new_security_name
-
 
     # Convert dates to datetime objects
     new_date = []
@@ -136,8 +134,8 @@ def convert(schwab_csv: str, pp_csv: str):
 
     # Write to CSV file
     df.to_csv(pp_csv, index=False, date_format="%Y-%m-%d")
-    #print(pp_csv)
-    
+    # print(pp_csv)
+
     return 0
 
 

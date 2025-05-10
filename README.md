@@ -1,7 +1,8 @@
 # A Charles Schwab CSV Converter for Portfolio Performance
 
 [![Testing badge](https://github.com/rlan/convert-csv-schwab2pp/actions/workflows/python-app.yml/badge.svg)](https://github.com/rlan/convert-csv-schwab2pp/actions)
-![Python versions](https://img.shields.io/badge/python-3.7%20%7C%203.8%20%7C%203.9%20%7C%203.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-blue)
+![Python versions](https://img.shields.io/badge/python-3.8%20%7C%203.9%20%7C%203.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-blue)
+[![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 ![MIT license](https://img.shields.io/github/license/rlan/convert-csv-schwab2pp)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15024607.svg)](https://doi.org/10.5281/zenodo.15024607)
@@ -20,18 +21,26 @@ After conversion, this [step-by-step guide](./guide/README.md) creates a new por
 
 ## Installation
 
-First, install [pipx](https://github.com/pypa/pipx) (not pip).
+First, install [uv](https://github.com/astral-sh/uv).
 
 Then:
 
 ```sh
-pipx install git+https://github.com/rlan/convert-csv-schwab2pp
+uv tool install git+https://github.com/rlan/convert-csv-schwab2pp
 ```
 
+Verify installation:
+
+```sh
+uv tool list
+```
+
+```txt
+schwab2pp v1.0.0
+- schwab2pp
+```
 
 ### Try it out!
-
-Let's see if installation was successful:
 
 ```sh
 schwab2pp --help
@@ -54,8 +63,8 @@ optional arguments:
 
 Example:
 
-An example Schwab CSV: [example.csv](example.csv).
-The converted ready-to-import CSV file: [example_out.csv](example_out.csv).
+- An example Schwab CSV: [example.csv](example.csv).
+- The converted ready-to-import CSV file: [example_out.csv](example_out.csv).
 
 To replicate this conversion:
 
@@ -67,14 +76,14 @@ schwab2pp example.csv -p example_out.csv
 ### Update to a new version
 
 ```sh
-pipx upgrade schwab2pp
+uv tool upgrade schwab2pp
 ```
 
 
 ### Uninstallation
 
 ```sh
-pipx uninstall schwab2pp
+uv tool uninstall schwab2pp
 ```
 
 
@@ -82,20 +91,20 @@ pipx uninstall schwab2pp
 
 Supported transactions:
 
-* "NRA Tax Adj"
-* "Credit Interest"
-* "NRA Withholding"
-* "Short Term Cap Gain"
-* "Long Term Cap Gain"
-* "Cash Dividend"
-* "Buy"
-* "Wire Received"
-* "Wire Sent"[^1] (Thank you, [@ipaulo](https://github.com/ipaulo))
-* "Sell" (Not verified)
+- "NRA Tax Adj"
+- "Credit Interest"
+- "NRA Withholding"
+- "Short Term Cap Gain"
+- "Long Term Cap Gain"
+- "Cash Dividend"
+- "Buy"
+- "Wire Received"
+- "Wire Sent"[^1] (Thank you, [@ipaulo](https://github.com/ipaulo))
+- "Sell" (Not verified)
 
 Not-yet-supported transactions:
 
-* ACH deposit and withdrawal
+- ACH deposit and withdrawal
 
 I have actual transactions for the supported transactions. "Sell" is an educated guess; I don't have an actual sale. If you could share actual transactions for not-yet-supported ones, please let me know. Thank you.
 
@@ -107,6 +116,44 @@ Dates:
 
 If date is in "date1 as of date2" format, "date1" will be used and "as of date2" will be appended to the resulting "Note" column.
 
+
+## Development
+
+Development is on the `develop` branch. Please send PR there.
+
+How to set up the development environment:
+
+- Install [uv](https://github.com/astral-sh/uv).
+- Clone this repo.
+- Install project:
+
+```sh
+cd convert-csv-schwab2pp
+git checkout develop
+uv sync --locked --all-extras
+```
+
+- Edit code.
+
+- Update install:
+
+```sh
+uv sync
+```
+
+- Run test:
+
+```sh
+uv run schwab2pp example.csv -p test.csv
+diff example_out.csv test.csv
+```
+
+- Run ruff:
+
+```sh
+uvx ruff check
+uvx ruff format
+```
 
 ## Citation
 
