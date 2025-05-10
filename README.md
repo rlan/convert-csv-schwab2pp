@@ -119,41 +119,8 @@ If date is in "date1 as of date2" format, "date1" will be used and "as of date2"
 
 ## Development
 
-Development is on the `develop` branch. Please send PR there.
+See [development.md](development.md)
 
-How to set up the development environment:
-
-- Install [uv](https://github.com/astral-sh/uv).
-- Clone this repo.
-- Install project:
-
-```sh
-cd convert-csv-schwab2pp
-git checkout develop
-uv sync --locked --all-extras
-```
-
-- Edit code.
-
-- Update install:
-
-```sh
-uv sync
-```
-
-- Run test:
-
-```sh
-uv run schwab2pp example.csv -p test.csv
-diff example_out.csv test.csv
-```
-
-- Run ruff:
-
-```sh
-uvx ruff check
-uvx ruff format
-```
 
 ## Citation
 

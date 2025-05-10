@@ -9,7 +9,6 @@ try:
 except ImportError as exc:
     raise ImportError("Is Pandas installed?") from exc
 
-
 parser = argparse.ArgumentParser(
     description=(
         "Converts a Charles Schwab transaction CSV file to a"
@@ -29,8 +28,8 @@ args = parser.parse_args()
 
 def remove_currency(text: str) -> str:
     """Removes currency symbol from string. Works for negative values."""
-    import re
     import locale
+    import re
 
     decimal_point_char = locale.localeconv()["decimal_point"]
     clean = re.sub(r"[^0-9" + decimal_point_char + "-" + r"]+", "", text)
@@ -66,7 +65,7 @@ def convert(schwab_csv: str, pp_csv: str):
     new_value = df["Value"].apply(remove_currency)
     df["Value"] = new_value
 
-    # Hard-coding. Assume all transcations are in USD.
+    # Hard-coding. Assume all transactions are in USD.
     # Add a new column: Transaction Currency
     df["Transaction Currency"] = ["USD"] * len(df.index)
 
@@ -110,7 +109,7 @@ def convert(schwab_csv: str, pp_csv: str):
     # If "Ticker Symbol" column is not empty, then "Security Name" column
     # contains the name of the security. Otherwise it's a description.
     # If latter, append to "Note" column.
-    new_security_name = []
+    new_security_name: list[str] = []
     for k, v in df["Ticker Symbol"].items():
         if len(v) == 0:
             new_security_name.append("")
@@ -120,7 +119,7 @@ def convert(schwab_csv: str, pp_csv: str):
     df["Security Name"] = new_security_name
 
     # Convert dates to datetime objects
-    new_date = []
+    new_date: list[str] = []
     for k, v in df["Date"].items():
         multiple = v.split(" as of ", 1)
         new_date.append(multiple[0])
