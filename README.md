@@ -71,7 +71,8 @@ schwab2pp --help
 │                               current shell, to copy it or  │
 │                               customize the installation.   │
 │ --help                        Show this message and exit.   │
-╰─────────────────────────────────────────────────────────────╯```
+╰─────────────────────────────────────────────────────────────╯
+```
 
 Example:
 
