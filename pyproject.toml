@@ -58,6 +58,7 @@ line-length = 88
 select = [
     # See: https://docs.astral.sh/ruff/rules/
     # Basic list from: https://docs.astral.sh/ruff/linter/#rule-selection
+    "D", # https://docs.astral.sh/ruff/faq/#does-ruff-support-numpy-or-google-style-docstrings
     "E", # https://docs.astral.sh/ruff/rules/#error-e
     "F", # https://docs.astral.sh/ruff/rules/#pyflakes-f
     "UP", # https://docs.astral.sh/ruff/rules/#pyupgrade-up
@@ -92,5 +93,8 @@ ignore = [
     "ISC002", # https://docs.astral.sh/ruff/rules/multi-line-implicit-string-concatenation/
 ]
 
+[tool.ruff.lint.pydocstyle]
+convention = "numpy" # https://docs.astral.sh/ruff/faq/#does-ruff-support-numpy-or-google-style-docstrings
+
 [tool.ruff.format]
-docstring-code-format = true
+docstring-code-format = true # https://docs.astral.sh/ruff/formatter/#docstring-formatting

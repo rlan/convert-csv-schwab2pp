@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+"""CLI wrapper for the conversion.
+
+This module creates a CLI app and validates arguments.
+"""
 
 from pathlib import Path
 from typing import Optional
@@ -14,18 +18,18 @@ app = typer.Typer()
 @app.command()
 def main(
     schwab_csv: Annotated[
-        Optional[Path], typer.Argument(help="Input Charles Schwab CSV file")
+        Optional[Path], typer.Argument(help="CSV file from Charles Schwab")
     ] = None,
     pp_csv: Annotated[
         Path,
         typer.Argument(help="Resulting CSV file for Portfolio Performance"),
     ] = Path("pp.csv"),
 ) -> int:
-    """
-    Converts a transactions CSV file from Charles Schwab to an equivalent and
+    """Convert transactions from Charles Schwab for Portfolio Performance.
+
+    Convert a transactions CSV file from Charles Schwab to an equivalent and
     ready-to-import CSV file for Portfolio Performance.
     """
-
     # Argument validation
     if schwab_csv is None:
         print("Missing input Schwab CSV file")

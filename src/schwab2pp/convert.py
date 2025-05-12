@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+"""Conversion of transactions.
+
+This module converts Schwab transactions to Portfolio Performance ones.
+"""
 
 import sys
 from pathlib import Path
@@ -7,7 +11,7 @@ import pandas as pd
 
 
 def remove_currency(text: str) -> str:
-    """Removes currency symbol from string. Works for negative values."""
+    """Remove currency symbol from string. Work for negative values."""
     import locale
     import re
 
@@ -17,12 +21,11 @@ def remove_currency(text: str) -> str:
 
 
 def convert(schwab_csv: Path, pp_csv: Path) -> int:
-    """Converts transactions from Charles Schwab to Portfolio Performance.
+    """Convert transactions from Charles Schwab for Portfolio Performance.
 
-    Converts a transactions CSV file from Charles Schwab to an equivalent and
+    Convert a transactions CSV file from Charles Schwab to an equivalent and
     ready-to-import CSV file for Portfolio Performance.
     """
-
     # A Charles Scwab CSV starts with a prefix and a suffix row
     # Prefix: "Transactions  for account..."
     # Suffix: "Transactions Total"

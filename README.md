@@ -49,14 +49,16 @@ schwab2pp --help
 ```txt
  Usage: schwab2pp [OPTIONS] [SCHWAB_CSV] [PP_CSV]
 
- Converts a transactions CSV file from Charles Schwab to an
+ Convert transactions from Charles Schwab for Portfolio
+ Performance.
+
+ Convert a transactions CSV file from Charles Schwab to an
  equivalent and ready-to-import CSV file for Portfolio
  Performance.
 
-
 ╭─ Arguments ─────────────────────────────────────────────────╮
-│   schwab_csv      [SCHWAB_CSV]  Input Charles Schwab CSV    │
-│                                 file                        │
+│   schwab_csv      [SCHWAB_CSV]  CSV file from Charles       │
+│                                 Schwab                      │
 │                                 [default: None]             │
 │   pp_csv          [PP_CSV]      Resulting CSV file for      │
 │                                 Portfolio Performance       │
@@ -69,8 +71,7 @@ schwab2pp --help
 │                               current shell, to copy it or  │
 │                               customize the installation.   │
 │ --help                        Show this message and exit.   │
-╰─────────────────────────────────────────────────────────────╯
-```
+╰─────────────────────────────────────────────────────────────╯```
 
 Example:
 
