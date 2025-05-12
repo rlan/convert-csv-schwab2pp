@@ -9,20 +9,19 @@
 default: install lint test
 
 install:
-	uv sync --all-extras --dev
+	uv sync --all-extras --group lint
 
 lint:
-	-uv run codespell ./src
-	-uv run ruff check ./src
-	-uv run ruff format ./src
-	-uv run basedpyright ./src
+	-codespell ./src
+	-ruff check ./src
+	-ruff format ./src
 
 test:
-	-uv run schwab2pp example.csv -p test.csv
+	-schwab2pp example.csv test.csv
 	-diff example_out.csv test.csv
 
 upgrade:
-	uv sync --upgrade
+	uv sync --upgrade --group lint
 
 build:
 	uv build

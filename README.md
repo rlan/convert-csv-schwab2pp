@@ -1,6 +1,6 @@
 # A Charles Schwab CSV Converter for Portfolio Performance
 
-[![Testing badge](https://github.com/rlan/convert-csv-schwab2pp/actions/workflows/python-app.yml/badge.svg)](https://github.com/rlan/convert-csv-schwab2pp/actions)
+[![Testing badge](https://github.com/rlan/convert-csv-schwab2pp/actions/workflows/ci.yml/badge.svg)](https://github.com/rlan/convert-csv-schwab2pp/actions)
 ![Python versions](https://img.shields.io/badge/python-3.8%20%7C%203.9%20%7C%203.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-blue)
 [![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
@@ -47,18 +47,29 @@ schwab2pp --help
 ```
 
 ```txt
-usage: schwab2pp [-h] [-p PP_CSV] schwab_csv
+ Usage: schwab2pp [OPTIONS] [SCHWAB_CSV] [PP_CSV]
 
-Converts a Charles Schwab transaction CSV file to a ready-to-import CSV file for Portfolio
-Performance.
+ Converts a transactions CSV file from Charles Schwab to an
+ equivalent and ready-to-import CSV file for Portfolio
+ Performance.
 
-positional arguments:
-  schwab_csv            Input Charles Schwab CSV file
 
-optional arguments:
-  -h, --help            show this help message and exit
-  -p PP_CSV, --pp_csv PP_CSV
-                        Resulting CSV file for Portfolio Performance (default: pp.csv)
+╭─ Arguments ─────────────────────────────────────────────────╮
+│   schwab_csv      [SCHWAB_CSV]  Input Charles Schwab CSV    │
+│                                 file                        │
+│                                 [default: None]             │
+│   pp_csv          [PP_CSV]      Resulting CSV file for      │
+│                                 Portfolio Performance       │
+│                                 [default: pp.csv]           │
+╰─────────────────────────────────────────────────────────────╯
+╭─ Options ───────────────────────────────────────────────────╮
+│ --install-completion          Install completion for the    │
+│                               current shell.                │
+│ --show-completion             Show completion for the       │
+│                               current shell, to copy it or  │
+│                               customize the installation.   │
+│ --help                        Show this message and exit.   │
+╰─────────────────────────────────────────────────────────────╯
 ```
 
 Example:
@@ -69,7 +80,7 @@ Example:
 To replicate this conversion:
 
 ```sh
-schwab2pp example.csv -p example_out.csv
+schwab2pp example.csv example_out.csv
 ```
 
 
