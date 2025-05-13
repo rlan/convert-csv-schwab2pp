@@ -30,3 +30,11 @@ make clean
 # Upgrade dependencies to compatible versions:
 make upgrade
 ```
+
+To test with a specific version of Python, use the [`UV_PYTHON`](https://docs.astral.sh/uv/configuration/environment/#uv_python) environment variable. For example,
+
+```sh
+UV_PYTHON=3.8 make
+```
+
+will install and use Python 3.8.

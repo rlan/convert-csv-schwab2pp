@@ -9,15 +9,15 @@
 default: install lint test
 
 install:
-	uv sync --all-extras --group lint
+	uv sync --locked --group lint
 
 lint:
-	-codespell ./src
-	-ruff check ./src
-	-ruff format ./src
+	-uv run codespell ./src
+	-uv run ruff check ./src
+	-uv run ruff format ./src
 
 test:
-	-schwab2pp example.csv test.csv
+	-uv run schwab2pp example.csv test.csv
 	-diff example_out.csv test.csv
 
 upgrade:
