@@ -26,16 +26,16 @@ jobs:
         # Common platforms: ["ubuntu-latest", "macos-latest", "windows-latest"]
         os: ["ubuntu-latest"]
         # uv supports python 3.8 and higher
-        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12", "3.13"]
+        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12", "3.13", "3.14"]
 
     runs-on: ${{ matrix.os }}
 
     steps:
     - name: Checkout (official GitHub action)
-      uses: actions/checkout@v5
+      uses: actions/checkout@v4
 
     - name: Install uv
-      uses: astral-sh/setup-uv@v6
+      uses: astral-sh/setup-uv@v5
       # Caching is enabled by default for GitHub-hosted runners:
       #   https://github.com/astral-sh/setup-uv?tab=readme-ov-file#enable-caching
       with:
@@ -45,7 +45,7 @@ jobs:
         python-version: ${{ matrix.python-version }}
 
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v6
+      uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}
 
@@ -76,17 +76,17 @@ jobs:
 
     steps:
     - name: Checkout (official GitHub action)
-      uses: actions/checkout@v5
+      uses: actions/checkout@v4
 
     - name: Install uv
-      uses: astral-sh/setup-uv@v6
+      uses: astral-sh/setup-uv@v5
       # Caching is enabled by default for GitHub-hosted runners:
       #   https://github.com/astral-sh/setup-uv?tab=readme-ov-file#enable-caching
       with:
         version: ${{ env.UV_VERSION }}
 
     - name: Set up Python
-      uses: actions/setup-python@v6
+      uses: actions/setup-python@v5
       with:
         python-version-file: ".python-version"
 
