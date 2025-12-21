@@ -110,6 +110,10 @@ def convert(schwab_csv: Path, pp_csv: Path) -> int:
     # Remove US dollar symbol
     new_value = df["Value"].fillna("").apply(remove_currency)
     df["Value"] = new_value
+    
+    # Remove US dollar symbol from Fees column if present
+    new_fees = df["Fees"].fillna("").apply(remove_currency)
+    df["Fees"] = new_fees
 
     # Hard-coding. Assume all transactions are in USD.
     # Add a new column: Transaction Currency
