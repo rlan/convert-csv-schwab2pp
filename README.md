@@ -114,12 +114,27 @@ Supported transactions:
 - "Wire Received"
 - "Wire Sent"[^1] (Thank you, [@ipaulo](https://github.com/ipaulo))
 - "Sell"[^2] (Thank you, [@ipaulo](https://github.com/ipaulo) and [@mgillman](https://github.com/mgillman))
+- "Advisor Fee"
+- "Reinvest Dividend"
+- "Reinvest Shares"
+- "Bank Interest"
+- "Funds Received"
+- "MoneyLink Transfer"
+- "Stock Plan Activity"
+- "Qualified Dividend"
+- "Adjustment"
+- "Misc Cash Entry"
+- "Service Fee"
 
 Not-yet-supported transactions:
 
 - ACH deposit and withdrawal
 
 I have actual transactions for the supported transactions. If you could share actual transactions for not-yet-supported ones, please let me know. Thank you.
+
+CSV format:
+
+The converter automatically detects and handles CSV files with or without prefix/suffix rows. If present, prefix rows (starting with "Transactions  for account...") and suffix rows (starting with "Transactions Total") are automatically skipped. The converter validates that the header row matches the expected Schwab CSV format.
 
 Duplicate transactions:
 
