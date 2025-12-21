@@ -5,6 +5,7 @@ This module converts Schwab transactions to Portfolio Performance ones.
 """
 
 import sys
+import re
 from pathlib import Path
 
 import pandas as pd
@@ -14,7 +15,11 @@ def remove_currency(text: str) -> str:
     """Remove currency symbol from string. Work for negative values."""
     import locale
     import re
-
+    
+    # Handle NaN values
+    if pd.isna(text):
+        return ""
+    
     decimal_point_char = locale.localeconv()["decimal_point"]
     clean = re.sub(r"[^0-9" + decimal_point_char + "-" + r"]+", "", text)
     return clean
@@ -26,17 +31,69 @@ def convert(schwab_csv: Path, pp_csv: Path) -> int:
     Convert a transactions CSV file from Charles Schwab to an equivalent and
     ready-to-import CSV file for Portfolio Performance.
     """
-    # A Charles Scwab CSV starts with a prefix and a suffix row
+    # Check if CSV has prefix and suffix rows that need to be skipped
     # Prefix: "Transactions  for account..."
     # Suffix: "Transactions Total"
-    # They are ignored.
+    # Expected header: "Date","Action","Symbol","Description","Quantity","Price","Fees & Comm","Amount"
+    expected_header = 'Date","Action","Symbol","Description","Quantity","Price","Fees & Comm","Amount'
+    prefix_pattern = re.compile(r'^"Transactions\s+for account', re.IGNORECASE)
+    suffix_pattern = re.compile(r'^"Transactions Total"', re.IGNORECASE)
+    
+    # Read first few lines to check for prefix
+    with open(schwab_csv, 'r', encoding='utf-8') as f:
+        first_line = f.readline().strip()
+        second_line = f.readline().strip()
+        
+        # Check if first line is prefix
+        skip_first_row = bool(prefix_pattern.match(first_line))
+        
+        # If skipping first row, header should be in second line
+        # Otherwise, header should be in first line
+        if skip_first_row:
+            header_line = second_line
+        else:
+            header_line = first_line
+        
+        # Verify header matches expected format
+        if expected_header not in header_line:
+            # If we were planning to skip first row but header doesn't match,
+            # maybe we shouldn't skip it
+            if skip_first_row and expected_header in first_line:
+                skip_first_row = False
+                header_line = first_line
+            else:
+                raise ValueError(f"Unexpected CSV header format. Expected header containing: {expected_header}")
+    
+    # Read last line to check for suffix
+    with open(schwab_csv, 'r', encoding='utf-8') as f:
+        lines = f.readlines()
+        if lines:
+            last_line = lines[-1].strip()
+            skip_last_row = bool(suffix_pattern.match(last_line))
+        else:
+            skip_last_row = False
+    
+    # A Charles Scwab CSV may start with a prefix and end with a suffix row
+    # Prefix: "Transactions  for account..."
+    # Suffix: "Transactions Total"
+    # They are ignored if present.
     dtype = {
         "Date": str,
         "Symbol": str,
         "Fees & Comm": str,  # must keep as string, in case of floating-point rounding errors.
         "Amount": str,  # must keep as string, in case of floating-point rounding errors.
     }
-    df = pd.read_csv(schwab_csv, skiprows=1, skipfooter=1, dtype=dtype, engine="python")
+    
+    skiprows = 1 if skip_first_row else 0
+    skipfooter = 1 if skip_last_row else 0
+    
+    df = pd.read_csv(
+        schwab_csv, 
+        skiprows=skiprows, 
+        skipfooter=skipfooter, 
+        dtype=dtype, 
+        engine="python"
+    )
     df["Symbol"] = df["Symbol"].fillna("")
 
     # Rename column names
@@ -51,8 +108,12 @@ def convert(schwab_csv: Path, pp_csv: Path) -> int:
     df.rename(columns=column_new_names, inplace=True)
 
     # Remove US dollar symbol
-    new_value = df["Value"].apply(remove_currency)
+    new_value = df["Value"].fillna("").apply(remove_currency)
     df["Value"] = new_value
+    
+    # Remove US dollar symbol from Fees column if present
+    new_fees = df["Fees"].fillna("").apply(remove_currency)
+    df["Fees"] = new_fees
 
     # Hard-coding. Assume all transactions are in USD.
     # Add a new column: Transaction Currency
@@ -87,6 +148,11 @@ def convert(schwab_csv: Path, pp_csv: Path) -> int:
         "Bank Interest": "Interest",
         "Funds Received": "Deposit",
         "MoneyLink Transfer": "Deposit",
+        "Stock Plan Activity": "Buy",
+        "Qualified Dividend": "Dividend",
+        "Adjustment": "Taxes",
+        "Misc Cash Entry": "Fees",
+        "Service Fee": "Fees",
     }
     new_type = [action_to_type[x] for x in df["Note"]]
     df["Type"] = new_type
